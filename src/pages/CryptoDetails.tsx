@@ -24,7 +24,12 @@ const CryptoDetails = () => {
  
     return (
     <div>
-      <div className="m-auto p-7 gap-x-16 flex flex-col md:flex-row mt-24">
+      <div className="bg-gray-800">
+        <h1 className="text-white text-2xl font-bold p-5">
+          Data Refetch Time(30s)
+        </h1>
+      </div>
+      <div className="m-auto p-7 gap-x-16 flex flex-col md:flex-row mt-12">
         <div className="w-full md:w-1/3 space-y-8">
           <div className="flex space-x-8 items-center">
             <p className=" text-gray-800">Cryptocurrencies</p>

@@ -1,22 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+
 const initialState = {
-  data: [],
-  status: 'idle',
+  cryptoList: [],
+  cryptoData: [],
+  error: null,
+
 };
 
 const cryptoSlice = createSlice({
   name: 'crypto',
   initialState,
   reducers: {
+    setCryptoList: (state, action) => {
+      state.cryptoList = action.payload;
+    },
     setCryptoData: (state, action) => {
-      state.data = action.payload;
+      state.cryptoData = action.payload;
     },
-    setStatus: (state, action) => {
-      state.status = action.payload;
-    },
+    setError: (state, action) => {
+      state.error = action.payload;
+  },
   },
 });
 
-export const { setCryptoData, setStatus } = cryptoSlice.actions;
+export const { setCryptoList, setCryptoData,setError } = cryptoSlice.actions;
 export default cryptoSlice.reducer;

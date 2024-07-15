@@ -6,7 +6,6 @@ export const axiosFactory = async <R, D = {}>(method: 'get' | 'post' | 'patch' |
             method,
             url,
             data,
-            withCredentials: true
         })
         return response.data;
     } catch (err) {

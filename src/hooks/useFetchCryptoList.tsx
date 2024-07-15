@@ -12,15 +12,18 @@ export const useFetchCryptoList = () => {
         refetchInterval:30000,
         staleTime:30000,
         onSuccess: (data:any) => {
-            if(data.data.success===false)
+            console.log("data",data);
+            if(data.success===false)
             {
-                dispatch(setError(data.data?.message));
+                dispatch(setError(data?.message));
                 return     
             }
             dispatch(setCryptoList(data.data));
             dispatch(setError(null));
         },
         onError: (error:any) => {
+            console.log("errror",error);
+            
             dispatch(setError(error?.message));
         },
     });
@@ -34,7 +37,8 @@ export const useFetchPriceHistory = (crypto:string|undefined) => {
         queryKey : ["getPriceHistory",crypto],
         refetchInterval:30000,
         staleTime:30000,
-        onSuccess: (data:any) => {            
+        onSuccess: (data:any) => {         
+               
             if(data.success===false)
             {
                 dispatch(setError(data?.message));
@@ -58,8 +62,9 @@ export const useFetchCryptoData = (crypto:string|undefined) => {
         refetchInterval:30000,
         staleTime:30000,
         onSuccess: (data:any) => {
+
             if(data.success===false)
-            {
+            {                
                 dispatch(setError(data?.message));
                 return     
             }

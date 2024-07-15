@@ -17,7 +17,7 @@ export const axiosFactory = async <R, D = {}>(method: 'get' | 'post' | 'patch' |
                 // toast.error("No Response From Server")
                 return {
                     success: false,
-                    message: "No Response From Server"
+                    message: err.message||"No Response From Server"
                 } as R;
             }
         } else {

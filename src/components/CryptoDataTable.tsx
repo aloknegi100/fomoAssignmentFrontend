@@ -6,6 +6,7 @@ import { formatDistance } from 'date-fns';
 const CryptoDataTable = () => {
     const {market_data} = useSelector((state: any) => state.crypto.cryptoData);
     const getRelativeTime = (timestamp: string) => {
+        if(!timestamp)return
         const now = new Date();
         const date = new Date(timestamp);
         return formatDistance(date, now, { addSuffix: true, includeSeconds: true });
@@ -43,7 +44,7 @@ const CryptoDataTable = () => {
             </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 bg-white">
-            {market_data?.map((obj:any,index: number) => (
+            {Array.isArray(market_data)&&market_data?.map((obj:any,index: number) => (
                 <tr key={index} className="cursor-pointer transition-colors duration-300 hover:bg-gray-100">
                 <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">{index+1}</td>
                 <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">{getRelativeTime(obj?.last_updated)}</td>

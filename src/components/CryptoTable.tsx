@@ -57,7 +57,7 @@ const CryptoTable = () => {
                 </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                {cryptoList?.map((crypto:any) => (
+                {Array.isArray(cryptoList)&&cryptoList?.map((crypto:any) => (
                     <tr key={crypto.id} className="cursor-pointer transition-colors duration-300 hover:bg-gray-100" onClick={()=>onCryptoClick(crypto.id)}>
                     <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">{crypto.market_cap_rank}</td>
                     <td className="whitespace-nowrap py-2 pl-4 pr-3 text-sm sm:pl-0">

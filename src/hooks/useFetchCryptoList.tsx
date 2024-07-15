@@ -1,7 +1,7 @@
 import { useQuery } from "react-query"
-import { fetchCryptoDataApi, fetchCryptoListApi } from "../services/api"
+import { fetchCryptoDataApi, fetchCryptoListApi, fetchPriceHistoryApi } from "../services/api"
 import { useDispatch } from "react-redux";
-import { setCryptoData, setCryptoList, setError } from "../redux/slices/cryptoSlice";
+import { setCryptoData, setCryptoList, setError, setPriceHistory } from "../redux/slices/cryptoSlice";
 
 export const useFetchCryptoList = () => {
     const dispatch = useDispatch();
@@ -9,6 +9,8 @@ export const useFetchCryptoList = () => {
     return useQuery({
         queryFn : fetchCryptoListApi,
         queryKey : ["getCryptoList"],
+        refetchInterval:30000,
+        staleTime:30000,
         onSuccess: (data:any) => {
             if(data.data.success===false)
             {
@@ -24,16 +26,41 @@ export const useFetchCryptoList = () => {
     });
 }
 
+export const useFetchPriceHistory = (crypto:string|undefined) => {
+    const dispatch = useDispatch();
+
+    return useQuery({
+        queryFn : ()=>fetchPriceHistoryApi(crypto),
+        queryKey : ["getPriceHistory",crypto],
+        refetchInterval:30000,
+        staleTime:30000,
+        onSuccess: (data:any) => {            
+            if(data.success===false)
+            {
+                dispatch(setError(data?.message));
+                return     
+            }
+            dispatch(setPriceHistory(data.data));
+            dispatch(setError(null));
+        },
+        onError: (error:any) => {
+            dispatch(setError(error?.message));
+        },
+    });
+}
+
 export const useFetchCryptoData = (crypto:string|undefined) => {
     const dispatch = useDispatch();
 
     return useQuery({
         queryFn : ()=>fetchCryptoDataApi(crypto),
-        queryKey : ["getCryptoData"],
+        queryKey : ["getCryptoData",crypto],
+        refetchInterval:30000,
+        staleTime:30000,
         onSuccess: (data:any) => {
-            if(data.data.success===false)
+            if(data.success===false)
             {
-                dispatch(setError(data.data?.message));
+                dispatch(setError(data?.message));
                 return     
             }
             dispatch(setCryptoData(data.data));

@@ -51,7 +51,7 @@ const CryptoTable = () => {
                     All Time High
                     </th>
                     <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                    Last 7 Days
+                    All Time Low
                     </th>
                     
                 </tr>
@@ -71,7 +71,7 @@ const CryptoTable = () => {
                         </div>
                     </td>
                     <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">
-                        <div className="text-gray-900">{crypto.current_price}</div>
+                        <div className="text-gray-900">${crypto.current_price}</div>
                     </td>
                     <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">
                         <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
@@ -79,15 +79,15 @@ const CryptoTable = () => {
                         </span>
                     </td>
                 
-                    <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">{crypto.market_cap}</td>
+                    <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">${crypto.market_cap}</td>
                     <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">
                         <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                         {crypto.market_cap_change_percentage_24h} %
                         </span>
                     </td>
-                    <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">{crypto.total_volume}</td>
-                    <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">{crypto.ath}</td>
-                    <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">{crypto.ath}</td>
+                    <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">${crypto.total_volume}</td>
+                    <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">${crypto.ath}</td>
+                    <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">${crypto.atl}</td>
 
 
 

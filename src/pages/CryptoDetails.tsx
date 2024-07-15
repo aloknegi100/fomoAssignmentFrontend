@@ -24,8 +24,8 @@ const CryptoDetails = () => {
  
     return (
     <div>
-      <div className="m-auto p-7 gap-x-16 flex mt-24 ">
-        <div className="w-1/3 space-y-8">
+      <div className="m-auto p-7 gap-x-16 flex flex-col md:flex-row mt-24">
+        <div className="w-full md:w-1/3 space-y-8">
           <div className="flex space-x-8 items-center">
             <p className=" text-gray-800">Cryptocurrencies</p>
             <p className="text-gray-500">/</p>
@@ -75,7 +75,7 @@ const CryptoDetails = () => {
                 </div>
           </div>
         </div>
-        <div className="w-2/3 mt-16">
+        <div className="w-full md:w-2/3 mt-16">
         <PriceHistoryGraph/>
         </div>
       </div>

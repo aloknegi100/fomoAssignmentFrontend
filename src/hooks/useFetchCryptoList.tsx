@@ -41,7 +41,7 @@ export const useFetchPriceHistory = (crypto:string|undefined) => {
                
             if(data.success===false)
             {
-                dispatch(setError(data?.message));
+                dispatch(setError(data?.message+". Please Try again after 30 seconds(Coin Gecko API Rate limit error)"));
                 return     
             }
             dispatch(setPriceHistory(data.data));
@@ -65,7 +65,7 @@ export const useFetchCryptoData = (crypto:string|undefined) => {
 
             if(data.success===false)
             {                
-                dispatch(setError(data?.message));
+                dispatch(setError(data?.message+". Please Try again after 30 seconds(Coin Gecko API Rate limit error)"));
                 return     
             }
             dispatch(setCryptoData(data.data));

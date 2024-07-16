@@ -1,0 +1,27 @@
+ 
+.loader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    z-index: 9999; /* Ensure it appears above other content */
+  }
+   
+  .loader-icon {
+    width: 100px;
+    height: 100px;
+  }
+   
+  .loader-text {
+    font-size: 18px; /* Adjust the font size */
+    color: #333; /* Dark text color */
+    font-family: Arial, sans-serif; /* Font family */
+    text-align: center; /* Center align the text */
+  }
+   

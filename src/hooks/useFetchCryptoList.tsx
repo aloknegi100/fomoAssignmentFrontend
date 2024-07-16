@@ -13,9 +13,9 @@ export const useFetchCryptoList = () => {
         staleTime:30000,
         onSuccess: (data:any) => {
             console.log("data",data);
-            if(data.success===false)
+            if(data.data.success===false)
             {
-                dispatch(setError(data?.message));
+                dispatch(setError(data?.data?.message+". Please Try again after 30 seconds(Coin Gecko API Rate limit error)"));
                 return     
             }
             dispatch(setCryptoList(data.data));

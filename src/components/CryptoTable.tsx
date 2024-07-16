@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useFetchCryptoList } from "../hooks/useFetchCryptoList"
 import { useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 
 const CryptoTable = () => {
     const navigate=useNavigate()
@@ -11,7 +12,7 @@ const CryptoTable = () => {
     const onCryptoClick=(id: string)=>navigate(`/cryptoDetails/${id}`)
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <Loader/>;
     }
 
     if (error) {

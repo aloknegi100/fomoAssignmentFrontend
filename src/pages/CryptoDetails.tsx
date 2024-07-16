@@ -3,6 +3,7 @@ import { useFetchCryptoData } from "../hooks/useFetchCryptoList";
 import { useSelector } from 'react-redux';
 import CryptoDataTable from "../components/CryptoDataTable";
 import PriceHistoryGraph from "../components/PriceHistoryGraph";
+import Loader from "../components/Loader";
 
 const CryptoDetails = () => {
     const {id:crypto}=useParams()
@@ -14,7 +15,7 @@ const CryptoDetails = () => {
 
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <Loader/>;
     }
 
     if (error) {
@@ -38,7 +39,7 @@ const CryptoDetails = () => {
           </div>
           <div className="space-y-4">
             <div className="flex space-x-3 items-center">
-              <img className="h-8 w-8 rounded-full" src={"https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"}/>
+              <img className="h-8 w-8 rounded-full" src={cryptoData?.image?.thumb??cryptoData?.image?.small}/>
               <h1 className="text-xl font-semibold text-gray-800">{cryptoData?.name}</h1>
               <p className="text-lg text-gray-500">{cryptoData?.symbol?.toUpperCase()} Price</p>
               <p className="text-gray-700 text-xs bg-gray-100 rounded-xl px-2 py-1">#{cryptoData?.market_data?.[0]?.market_cap_rank}</p>
